@@ -1,43 +1,42 @@
 
-createe()
-{
+createe(){
+
 	touch add.txt
 	echo "\t\t\taddress book created"
-	echo all the Records are listed below>add.txt	
+	echo all the Records are listed below>add.txt
+
 }
 
-vieww()
-{
+vieww(){
+
 	echo "\t\t\tLet's view the addreess book"
 	cat add.txt
+
 }
 
-insertt()
-{
+insertt(){
+
 	echo "\t\t\tAdd a record "
 	echo "\t\t\tRegnumber  Name Mobile_Number"
 	read reg
 	read name
 	read mob
-	echo $reg $name $mob >>add.txt
+	echo $reg $name $mob >> add.txt
 
-# > new record
-# >> for appending
+	# > creates a new record
+	# >> appends the data to the existing record
 }
 
-deletee()
-{
+deletee(){
+
 	echo "Enter the sub string of the record which you want to delete"
-read -r sub
+	read -r sub
+	sed -i "/$sub/d" add.txt
 
-
-	#sed  "/$sub/d" add.txt
-	sed -i "/$sub/d" add.txt	
 }
 
-modifyy()
-{
-	
+modifyy(){
+
 	echo "enter the record you want to modidy"
 	read mod
 
@@ -45,25 +44,21 @@ modifyy()
 	read modd
 
 	sed -i -e "s/$mod/$modd/g" add.txt
-	
-	
-#	cat add.txt
 
 }
 
-searchh()
-{
+searchh(){
+
 	echo "enter the record you want to search"
 	read sear
 	grep "$sear" add.txt
-	
-	
+
 	retstat=`echo $?`
 	if [ $retstat -eq 1 ]
 		then
 		echo "No records were found for $sear"
-	fi	
-	
+	fi
+
 }
 
 choice=1
@@ -92,9 +87,4 @@ do
 		*)echo "Invalid Choice"
 	esac
 done
-		 
-
-
-
-
 
